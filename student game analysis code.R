@@ -4,7 +4,6 @@ notapSubset <- subset(studData, Grade == "A " | Grade == "B " | Grade == "C ")
 
 
 
-
 gamerMale <- subset(studData, like == "1" & sex == "Male")
 gamerFemale <- subset(studData, like == "1" & sex == "Female")
 
@@ -14,7 +13,7 @@ notGamerFemale <- subset(studData, like == "0" & sex == "Female")
   
   
                            
-########### Question 1a ############
+### Proportion Table
 
 contTable <- matrix(c(nrow(gamerMale),nrow(gamerFemale), nrow(notGamerMale), nrow(notGamerFemale)), nrow= 2, byrow = TRUE)
 dimnames(contTable) <- list(c("Likes Games", "Doesn't Like Games"), c("Male", "Female"))
@@ -55,7 +54,7 @@ fishTest2 <- fisher.test(contTableNotAp)
 
 
 
-####################### QEUSTION 2 ###################################3
+####################### Logistic Models
 
 like <- studData$like
 sex <- studData$sex
@@ -68,14 +67,13 @@ model2.2 <- glm(like ~ sex + grades, family = binomial, data = studData)
 summary1 <- summary(model2.1)
 summary2 <- summary(model2.2)
 
-################################Question 3 ##########
+######################## Poisson Models
 
+# Below is code used to create 'count' data for the poisson models
 count <- c(31,103,11,18,26,88,32,90)
 like1 <- as.factor(c("no", "no", "no","no", "yes","yes","yes","yes"))
 sex1 <- as.factor(c("female" , "female", "male", "male", "female", "female", "male", "male"))
 grade1 <- as.factor(c("A+", "not A+", "A+", "not A+","A+", "not A+","A+", "not A+"))
-
-
 
 
 pModel1 <- glm(count ~ like1 * sex1 * grade1, family = poisson)
