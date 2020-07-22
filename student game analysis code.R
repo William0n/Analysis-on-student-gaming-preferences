@@ -3,14 +3,11 @@ apSubset <- subset(studData, grade == "1")
 notapSubset <- subset(studData, Grade == "A " | Grade == "B " | Grade == "C ")
 
 
-
 gamerMale <- subset(studData, like == "1" & sex == "Male")
 gamerFemale <- subset(studData, like == "1" & sex == "Female")
 
 notGamerMale  <- subset(studData, like == "0" & sex == "Male")
 notGamerFemale <- subset(studData, like == "0" & sex == "Female")
-
-  
   
                            
 ### Proportion Table
@@ -21,8 +18,6 @@ names(dimnames(contTable)) <- c("Game Preference", "Sex")
 
 diffPropTest <- prop.test(contTable, correct = FALSE)
 fisherTest <- fisher.test(contTable)
-
-########### Question 1b ############ SEX LIKE table 
 
 ################################################################################ A++++++++++++
 
